@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-04-01 18:18+0000\n"
-"Last-Translator: Ievgen Ievgen <jony057dev@gmail.com>\n"
+"PO-Revision-Date: 2025-01-06 17:07+0000\n"
+"Last-Translator: Arsen <daa91@outlook.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/openwrt/"
 "luciapplicationsbanip/uk/>\n"
 "Language: uk\n"
@@ -9,7 +9,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #: applications/luci-app-banip/htdocs/luci-static/resources/view/banip/setreport.js:78
 msgid "-- Set Selection --"
@@ -28,39 +28,42 @@ msgstr "— Встановити Обране —"
 #: applications/luci-app-banip/htdocs/luci-static/resources/view/banip/overview.js:619
 #: applications/luci-app-banip/htdocs/luci-static/resources/view/banip/overview.js:783
 msgid "-- default --"
-msgstr ""
+msgstr "-- за замовчуванням --"
 
 #: applications/luci-app-banip/htdocs/luci-static/resources/view/banip/overview.js:726
 msgid "AFRINIC - serving Africa and the Indian Ocean region"
-msgstr ""
+msgstr "AFRINIC — обслуговує Африку та регіон Індійського океану"
 
 #: applications/luci-app-banip/htdocs/luci-static/resources/view/banip/overview.js:727
 msgid "APNIC - serving the Asia Pacific region"
-msgstr ""
+msgstr "APNIC - обслуговує Азійсько-Тихоокеанський регіон"
 
 #: applications/luci-app-banip/htdocs/luci-static/resources/view/banip/overview.js:728
 msgid "ARIN - serving Canada and the United States"
-msgstr ""
+msgstr "ARIN - обслуговує Канаду та США"
 
 #: applications/luci-app-banip/htdocs/luci-static/resources/view/banip/overview.js:734
+#, fuzzy
 msgid "ASNs"
-msgstr ""
+msgstr "ASNs"
 
 #: applications/luci-app-banip/htdocs/luci-static/resources/view/banip/overview.js:181
 msgid "Active Devices"
-msgstr ""
+msgstr "Активні Пристрої"
 
 #: applications/luci-app-banip/htdocs/luci-static/resources/view/banip/overview.js:177
 msgid "Active Feeds"
-msgstr ""
+msgstr "Активні Канали"
 
 #: applications/luci-app-banip/htdocs/luci-static/resources/view/banip/overview.js:185
 msgid "Active Uplink"
-msgstr ""
+msgstr "Активний Аплінк"
 
 #: applications/luci-app-banip/htdocs/luci-static/resources/view/banip/overview.js:322
 msgid "Additional trigger delay in seconds during interface reload and boot."
 msgstr ""
+"Додаткова затримка спрацьовування у секундах під час перезавантаження і "
+"завантаження інтерфейса."
 
 #: applications/luci-app-banip/htdocs/luci-static/resources/view/banip/overview.js:248
 msgid "Advanced Settings"
@@ -68,11 +71,11 @@ msgstr "Розширені налаштування"
 
 #: applications/luci-app-banip/htdocs/luci-static/resources/view/banip/overview.js:432
 msgid "Allow Protocol/Ports"
-msgstr ""
+msgstr "Дозволити Протоколи/Порти"
 
 #: applications/luci-app-banip/htdocs/luci-static/resources/view/banip/overview.js:436
 msgid "Allow VLAN Forwards"
-msgstr ""
+msgstr "Дозволити переадресацію VLAN"
 
 #: applications/luci-app-banip/htdocs/luci-static/resources/view/banip/overview.js:744
 msgid "Allowlist Feed URLs"

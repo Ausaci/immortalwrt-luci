@@ -1,13 +1,13 @@
 # Copyright (C) 2018-2020 L-WRT Team
-# Copyright (C) 2021-2023 xiaorouji
+# Copyright (C) 2021-2025 xiaorouji
 #
 # This is free software, licensed under the GNU General Public License v3.
 
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-passwall
-PKG_VERSION:=4.78.4
-PKG_RELEASE:=
+PKG_VERSION:=25.1.15
+PKG_RELEASE:=1
 
 PKG_CONFIG_DEPENDS:= \
 	CONFIG_PACKAGE_$(PKG_NAME)_INCLUDE_Haproxy \
@@ -20,6 +20,7 @@ PKG_CONFIG_DEPENDS:= \
 	CONFIG_PACKAGE_$(PKG_NAME)_INCLUDE_Trojan_Plus \
 	CONFIG_PACKAGE_$(PKG_NAME)_INCLUDE_tuic_client \
 	CONFIG_PACKAGE_$(PKG_NAME)_INCLUDE_V2ray_Geodata \
+	CONFIG_PACKAGE_$(PKG_NAME)_INCLUDE_V2ray_Geoview \
 	CONFIG_PACKAGE_$(PKG_NAME)_INCLUDE_V2ray_Plugin \
 	CONFIG_PACKAGE_$(PKG_NAME)_INCLUDE_Xray \
 	CONFIG_PACKAGE_$(PKG_NAME)_INCLUDE_Xray_Plugin
@@ -27,7 +28,7 @@ PKG_CONFIG_DEPENDS:= \
 LUCI_TITLE:=LuCI support for PassWall
 LUCI_PKGARCH:=all
 LUCI_DEPENDS:=+coreutils +coreutils-base64 +coreutils-nohup +curl \
-	+chinadns-ng +dns2socks +dns2tcp +ip-full +libuci-lua +lua +luci-compat +luci-lib-jsonc \
+	+chinadns-ng +dns2socks +ip-full +libuci-lua +lua +luci-compat +luci-lib-jsonc \
 	+microsocks +resolveip +tcping +unzip +ipt2socks \
 	+kmod-nft-socket +kmod-nft-tproxy +kmod-nft-nat \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Brook:brook \
@@ -38,11 +39,11 @@ LUCI_DEPENDS:=+coreutils +coreutils-base64 +coreutils-nohup +curl \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks_Rust_Server:shadowsocks-rust-ssserver \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Simple_Obfs:simple-obfs \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_SingBox:sing-box \
-	+PACKAGE_$(PKG_NAME)_INCLUDE_Trojan_GO:trojan-go \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Trojan_Plus:trojan-plus \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_tuic_client:tuic-client \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_V2ray_Geodata:v2ray-geoip \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_V2ray_Geodata:v2ray-geosite \
+	+PACKAGE_$(PKG_NAME)_INCLUDE_V2ray_Geoview:geoview \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_V2ray_Plugin:v2ray-plugin \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Xray:xray-core \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Xray_Plugin:xray-plugin
@@ -84,7 +85,7 @@ config PACKAGE_$(PKG_NAME)_INCLUDE_SingBox
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Trojan_Plus
 	bool "Include Trojan-Plus"
-	default y
+	default n
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_tuic_client
 	bool "Include tuic-client"
@@ -94,6 +95,10 @@ config PACKAGE_$(PKG_NAME)_INCLUDE_tuic_client
 config PACKAGE_$(PKG_NAME)_INCLUDE_V2ray_Geodata
 	bool "Include V2ray_Geodata"
 	default n
+
+config PACKAGE_$(PKG_NAME)_INCLUDE_V2ray_Geoview
+	bool "Include V2ray_Geoview"
+	default y if aarch64||arm||i386||x86_64
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_V2ray_Plugin
 	bool "Include V2ray-Plugin (Shadowsocks Plugin)"
@@ -123,6 +128,12 @@ define Package/$(PKG_NAME)/conffiles
 /usr/share/passwall/rules/lanlist_ipv6
 /usr/share/passwall/rules/domains_excluded
 /www/luci-static/resources/qrcode.min.js
+endef
+
+define Package/$(PKG_NAME)/postrm
+#!/bin/sh
+rm -f $${IPKG_INSTROOT}/usr/share/passwall/rules/*.nft
+exit 0
 endef
 
 include ../../luci.mk
